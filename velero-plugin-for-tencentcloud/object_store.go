@@ -133,7 +133,7 @@ func (o *ObjectStore) Init(config map[string]string) error {
 		objectService.insecureSkipTLSVerify = true
 		bucketService.insecureSkipTLSVerify = true
 	}
-	if err := loadEnv(); err != nil {
+	if err := loadEnv(TENCENT_CREDENTIALS_FILE); err != nil {
 		return err
 	}
 	secretId := os.Getenv("TENCENT_CLOUD_SECRETID")
