@@ -1,0 +1,22 @@
+# Folders
+_output
+
+*.exe
+*.test
+*.prof
+debug
+
+.container-*
+.push-*
+
+# Editor related
+.vimrc
+.go
+.DS_Store
+.vscode
+*.diff
+.vs
+
+_tiltbuild
+
+.idea
