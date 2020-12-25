@@ -24,7 +24,6 @@ func main() {
 		BindFlags(pflag.CommandLine).
 		RegisterObjectStore("velero.io/tencentcloud", newTencentCloudObjectStore).
 		RegisterRestoreItemAction("velero.io/tencentcloud", newTencentCloudRestoreItemAction).
-		// RegisterVolumeSnapshotter("velero.io/tencentcloud", newTencentVolumeSnapshotter).
 		Serve()
 }
 

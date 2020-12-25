@@ -7,8 +7,10 @@ import (
 )
 
 const (
-	regionKey                = "region"
-	insecureSkipTLSVerifyKey = "insecureSkipTLSVerify"
+	//regionKey                   = "region"
+	REGION_KEY                = "region"
+	INSECURESKIPTLSVERIFY_KEY = "insecureSkipTLSVerify"
+	//insecureSkipTLSVerifyKey    = "insecureSkipTLSVerify"
 	KIND_KEY                    = "kind"
 	PERSISTENT_VOLUME_KEY       = "PersistentVolume"
 	PERSISTENT_VOLUME_CLAIM_KEY = "PersistentVolumeClaim"
@@ -17,8 +19,8 @@ const (
 	TENCENT_CREDENTIALS_FILE    = "TENCENT_CREDENTIALS_FILE"
 )
 
-func loadEnv() error {
-	envFile := os.Getenv("TENCENT_CREDENTIALS_FILE")
+func loadEnv(key string) error {
+	envFile := os.Getenv(key)
 	if envFile == "" {
 		return nil
 	}

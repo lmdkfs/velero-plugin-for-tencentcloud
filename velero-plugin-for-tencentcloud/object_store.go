@@ -107,8 +107,8 @@ func newObjectStore(logger logrus.FieldLogger) *ObjectStore {
 func (o *ObjectStore) Init(config map[string]string) error {
 
 	if err := veleroplugin.ValidateObjectStoreConfigKeys(config,
-		regionKey,
-		insecureSkipTLSVerifyKey,
+		REGION_KEY,
+		INSECURESKIPTLSVERIFY_KEY,
 	); err != nil {
 		return err
 	}
@@ -118,22 +118,22 @@ func (o *ObjectStore) Init(config map[string]string) error {
 		region        string
 	)
 
-	if region = config[regionKey]; region == "" {
+	if region = config[REGION_KEY]; region == "" {
 		return errors.New("region is empty")
 	}
 	objectService.region = region
 	bucketService.region = region
 
-	if insecureSkipTLSVerifyVal := config[insecureSkipTLSVerifyKey]; insecureSkipTLSVerifyVal != "" {
+	if insecureSkipTLSVerifyVal := config[INSECURESKIPTLSVERIFY_KEY]; insecureSkipTLSVerifyVal != "" {
 		var err error
 		if objectService.insecureSkipTLSVerify, err = strconv.ParseBool(insecureSkipTLSVerifyVal); err != nil {
-			return errors.Wrapf(err, "could not parse %s (expected bool)", insecureSkipTLSVerifyKey)
+			return errors.Wrapf(err, "could not parse %s (expected bool)", INSECURESKIPTLSVERIFY_KEY)
 		}
 	} else {
 		objectService.insecureSkipTLSVerify = true
 		bucketService.insecureSkipTLSVerify = true
 	}
-	if err := loadEnv(); err != nil {
+	if err := loadEnv(TENCENT_CREDENTIALS_FILE); err != nil {
 		return err
 	}
 	secretId := os.Getenv("TENCENT_CLOUD_SECRETID")
