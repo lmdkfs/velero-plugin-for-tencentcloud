@@ -1,4 +1,4 @@
-module github.com/lmdkfs/velero-plugin-for-tencent
+module github.com/lmdkfs/velero-plugin-for-tencentcloud
 
 go 1.15
 

@@ -9,6 +9,12 @@ import (
 const (
 	regionKey                = "region"
 	insecureSkipTLSVerifyKey = "insecureSkipTLSVerify"
+	KIND_KEY                    = "kind"
+	PERSISTENT_VOLUME_KEY       = "PersistentVolume"
+	PERSISTENT_VOLUME_CLAIM_KEY = "PersistentVolumeClaim"
+	MIN_REQ_VOL_SIZE_BYTES      = 10737418240
+	MIN_REQ_VOL_SIZE_STRING     = "10Gi"
+	TENCENT_CREDENTIALS_FILE    = "TENCENT_CREDENTIALS_FILE"
 )
 
 func loadEnv() error {

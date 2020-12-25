@@ -22,16 +22,21 @@ import (
 func main() {
 	veleroplugin.NewServer().
 		BindFlags(pflag.CommandLine).
-		RegisterObjectStore("velero.io/tencent", newTencentObjectStore).
-		RegisterVolumeSnapshotter("velero.io/tencent", newTencentVolumeSnapshotter).
+		RegisterObjectStore("velero.io/tencentcloud", newTencentCloudObjectStore).
+		RegisterRestoreItemAction("velero.io/tencentcloud", newTencentCloudRestoreItemAction).
+		// RegisterVolumeSnapshotter("velero.io/tencentcloud", newTencentVolumeSnapshotter).
 		Serve()
 }
 
-func newTencentObjectStore(logger logrus.FieldLogger) (interface{}, error) {
-	logger.Println(">>>>>>Start newTencentObjectStore")
+func newTencentCloudObjectStore(logger logrus.FieldLogger) (interface{}, error) {
 	return newObjectStore(logger), nil
 }
 
-func newTencentVolumeSnapshotter(logger logrus.FieldLogger) (interface{}, error) {
-	return newVolumeSnapshotter(logger), nil
+func newTencentCloudRestoreItemAction(logger logrus.FieldLogger) (interface{}, error) {
+	return newRestoreItemAction(logger), nil
 }
+
+// TODO
+// func newTencentVolumeSnapshotter(logger logrus.FieldLogger) (interface{}, error) {
+// 	return newVolumeSnapshotter(logger), nil
+// }
