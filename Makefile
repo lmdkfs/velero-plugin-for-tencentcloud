@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PKG := github.com/lmdkfs/velero-plugin-for-tencent
-BIN := velero-plugin-for-tencent
+PKG := github.com/lmdkfs/velero-plugin-for-tencentcloud
+BIN := velero-plugin-for-tencentcloud
 
 REGISTRY ?= velero
 VERSION ?= main
