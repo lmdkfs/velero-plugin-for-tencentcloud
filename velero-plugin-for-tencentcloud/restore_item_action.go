@@ -31,7 +31,7 @@ func (p *RestoreItemAction) AppliesTo() (velero.ResourceSelector, error) {
 // Execute allows the RestorePlugin to perform arbitrary logic with the item being restored,
 // in this case, setting a custom annotation on the item being restored.
 func (p *RestoreItemAction) Execute(input *velero.RestoreItemActionExecuteInput) (*velero.RestoreItemActionExecuteOutput, error) {
-	p.log.Info("TencentCloud RestorePlugin!")
+	p.log.Info("Tencent Cloud RestorePlugin!")
 
 	var kind string
 	var err error
@@ -65,7 +65,7 @@ func (p *RestoreItemAction) Execute(input *velero.RestoreItemActionExecuteInput)
 		capacity := pvc.Spec.Resources.Requests[corev1api.ResourceName(corev1api.ResourceStorage)]
 		volSizeBytes := capacity.Value()
 		if volSizeBytes <= int64(MIN_REQ_VOL_SIZE_BYTES) {
-			p.log.Warnf("Alibaba disk volume request at least 20Gi, auto resize persistentVolumeClaim to 20Gi.")
+			p.log.Warnf("Tencent Cloud disk volume request at least 20Gi, auto resize persistentVolumeClaim to 20Gi.")
 			pvc.Spec.Resources = corev1api.ResourceRequirements{
 				Requests: getResourceList(MIN_REQ_VOL_SIZE_STRING),
 			}
@@ -83,7 +83,7 @@ func (p *RestoreItemAction) Execute(input *velero.RestoreItemActionExecuteInput)
 		capacity := pv.Spec.Capacity[corev1api.ResourceName(corev1api.ResourceStorage)]
 		volSizeBytes := capacity.Value()
 		if volSizeBytes <= int64(MIN_REQ_VOL_SIZE_BYTES) {
-			p.log.Warnf("Alibaba disk volume request at least 20Gi, auto resize persistentVolume to 20Gi.")
+			p.log.Warnf("Tencent Cloud disk volume request at least 20Gi, auto resize persistentVolume to 20Gi.")
 			persistentVolumeSource := pv.Spec.PersistentVolumeSource
 			accessModes := pv.Spec.AccessModes
 			claimRef := pv.Spec.ClaimRef
