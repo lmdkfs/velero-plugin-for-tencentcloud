@@ -31,7 +31,7 @@ func (p *RestoreItemAction) AppliesTo() (velero.ResourceSelector, error) {
 // Execute allows the RestorePlugin to perform arbitrary logic with the item being restored,
 // in this case, setting a custom annotation on the item being restored.
 func (p *RestoreItemAction) Execute(input *velero.RestoreItemActionExecuteInput) (*velero.RestoreItemActionExecuteOutput, error) {
-	p.log.Info("Alibaba Cloud RestorePlugin!")
+	p.log.Info("TencentCloud RestorePlugin!")
 
 	var kind string
 	var err error
